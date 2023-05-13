@@ -72,8 +72,12 @@ def visualize(cd, period, weight, span):
             'mode': 'lines+markers', 'name': f"{t.name}({t.value})"
         }
         fig.add_trace(go.Scatter(**options))
-    fig.update_layout(margin=dict(l=0, r=0, t=0, b=0))
-    fig.update_layout(width=600, height=300)
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),
+        width=500,
+        height=250,
+        coloraxis=dict(colorscale='Rainbow')
+    )
     # 레이아웃 설정
     # 그래프 출력
     # fig.show()
@@ -82,6 +86,7 @@ def visualize(cd, period, weight, span):
     # return df.iloc[-1]
     table = df.iloc[-1].sort_values(ascending=False)
     table.name = 'Score'
+    col1.title("Momentum Score Dashboard")
     col1.dataframe(table, use_container_width=True)
 
 data = History()
