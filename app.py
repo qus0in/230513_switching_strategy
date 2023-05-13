@@ -115,11 +115,11 @@ def visualize(cd, period, weight, span):
         width=500,
         height=250,
         # legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1)
-        legend=dict(orientation='h', yanchor='top', y=-0.1, xanchor='center', x=0.5)
+        legend=dict(orientation='h', yanchor='top', y=1.02, xanchor='center', x=0.5)
     )
     
     # Stremlit에 Plotly 그래프 표시
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, True)
 
 data = History()
 PERIOD = 20
