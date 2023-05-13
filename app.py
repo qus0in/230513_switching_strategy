@@ -110,6 +110,14 @@ def visualize(cd, period, weight, span):
     fig.update_yaxes(title_text=f'{first} 가격', secondary_y=False)
     fig.update_yaxes(title_text=f'{second} 가격', secondary_y=True)
 
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),
+        width=500,
+        height=250,
+        # legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1)
+        legend=dict(orientation='h', yanchor='top', y=-0.1, xanchor='center', x=0.5)
+    )
+    
     # Stremlit에 Plotly 그래프 표시
     st.plotly_chart(fig)
 
