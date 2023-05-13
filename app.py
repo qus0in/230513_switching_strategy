@@ -94,7 +94,8 @@ def visualize(cd, period, weight, span):
     # 이중축
     # st.write(table.index[0], table.index[1])
     first, second = table.index[:2]
-    st.write(cd.data[getattr(Ticker, first)])
+    st.write(cd.data[getattr(Ticker, first)].iloc[-20:])
+    st.write(cd.data[getattr(Ticker, second)].iloc[-20:])
 
 data = History()
 PERIOD = 20
