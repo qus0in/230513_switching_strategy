@@ -91,7 +91,7 @@ def visualize(cd, period, weight, span):
     st.plotly_chart(fig, True, theme=None)
     # return df.iloc[-1]
 
-    st.write(df.index[0], df.index[1])
+    st.write(table.index[0], table.index[1])
 
 data = History()
 PERIOD = 20
