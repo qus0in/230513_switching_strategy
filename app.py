@@ -73,7 +73,7 @@ def visualize(cd, period, weight, span):
         }
         fig.add_trace(go.Scatter(**options))
     fig.update_layout(margin=dict(l=0, r=0, t=0, b=0))
-    fig.update_layout(width=800, height=400)
+    fig.update_layout(width=400, height=200)
     # 레이아웃 설정
     # 그래프 출력
     # fig.show()
