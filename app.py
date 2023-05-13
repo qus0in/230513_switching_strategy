@@ -77,7 +77,6 @@ def visualize(cd, period, weight, span):
     # fig.show()
     st.plotly_chart(fig)
     # return df.iloc[-1]
-    df.columns = ['Score']
     st.dataframe(df.iloc[-1].sort_values(ascending=False))
 
 data = History()
