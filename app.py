@@ -63,8 +63,15 @@ def visualize(cd, period, weight, span):
     df = pd.concat([get_momentum(cd, i, weight=weight)
                     for i in range(period, -1, -1)], axis=1
                    ).T.ewm(span).mean()
-    # 모멘텀 값을 그래프로 시각화합니다.
-    # df.T.plot(style='--x')
+
+    # 테이블
+    st.title("Momentum Score Dashboard")
+    table = df.iloc[-1].sort_values(ascending=False)
+    table.name = 'Score'
+
+    # 그래프
+    # df.T.plot(style='--x')    
+    st.dataframe(table, use_container_width=True)
     fig = go.Figure()
     for t in Ticker:
         options = {
@@ -76,18 +83,13 @@ def visualize(cd, period, weight, span):
         margin=dict(l=0, r=0, t=0, b=0),
         width=500,
         height=250,
-        legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1)
+        # legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1)
+        legend=dict(orientation='h', yanchor='top', y=-0.1, xanchor='center', x=0.5)
     )
-    # 레이아웃 설정
-    # 그래프 출력
     # fig.show()
-    col1, col2 = st.columns([2, 3])
-    col2.plotly_chart(fig, True, theme=None)
+    # col1, col2 = st.columns([2, 3])
+    st.plotly_chart(fig, True, theme=None)
     # return df.iloc[-1]
-    table = df.iloc[-1].sort_values(ascending=False)
-    table.name = 'Score'
-    col1.title("Momentum Score Dashboard")
-    col1.dataframe(table, use_container_width=True)
 
 data = History()
 PERIOD = 20
