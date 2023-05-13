@@ -75,11 +75,12 @@ def visualize(cd, period, weight, span):
     # 레이아웃 설정
     # 그래프 출력
     # fig.show()
-    st.plotly_chart(fig)
+    col1, col2 = st.columns(2)
+    col2.plotly_chart(fig)
     # return df.iloc[-1]
     table = df.iloc[-1].sort_values(ascending=False)
     table.name = 'Score'
-    st.dataframe(table)
+    col1.dataframe(table)
 
 data = History()
 PERIOD = 20
