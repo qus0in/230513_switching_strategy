@@ -77,11 +77,12 @@ def visualize(cd, period, weight, span):
     # fig.show()
     st.plotly_chart(fig)
     # return df.iloc[-1]
-    st.table(df.iloc[-1])
+    df.columns = ['Score']
+    st.dataframe(df.iloc[-1].sort_values(ascending=False))
 
 data = History()
 # period = 100
 period = 20
 weight = True
 span = 3
-visualize(data, period, weight, span).sort_values(ascending=False)
+visualize(data, period, weight, span)
