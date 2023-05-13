@@ -81,7 +81,7 @@ def visualize(cd, period, weight, span):
     # return df.iloc[-1]
     table = df.iloc[-1].sort_values(ascending=False)
     table.name = 'Score'
-    col1.dataframe(table)
+    col1.dataframe(table, use_container_width=True)
 
 data = History()
 PERIOD = 20
