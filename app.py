@@ -75,7 +75,8 @@ def visualize(cd, period, weight, span):
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0),
         width=500,
-        height=250
+        height=250,
+        legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1)
     )
     # 레이아웃 설정
     # 그래프 출력
