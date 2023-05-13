@@ -72,6 +72,7 @@ def visualize(cd, period, weight, span):
             'mode': 'lines+markers', 'name': f"{t.name}({t.value})"
         }
         fig.add_trace(go.Scatter(**options))
+    fig.update_layout(margin=dict(l=0, r=0, t=0, b=0))
     # 레이아웃 설정
     # 그래프 출력
     # fig.show()
