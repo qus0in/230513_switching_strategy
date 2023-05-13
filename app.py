@@ -1,5 +1,7 @@
 import streamlit as st
 import plotly.graph_objs as go
+from plotly.subplots import make_subplots
+
 from datetime import datetime
 import FinanceDataReader as fdr
 import pandas as pd
@@ -94,8 +96,22 @@ def visualize(cd, period, weight, span):
     # 이중축
     # st.write(table.index[0], table.index[1])
     first, second = table.index[:2]
-    st.write(cd.data[getattr(Ticker, first)].iloc[-20:])
-    st.write(cd.data[getattr(Ticker, second)].iloc[-20:])
+    d1 = cd.data[getattr(Ticker, first)].iloc[-20:]
+    d2 = cd.data[getattr(Ticker, second)].iloc[-20:]
+
+    # Plotly 서브플롯 생성
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+
+    # 데이터를 서브플롯에 추가
+    fig.add_trace(go.Scatter(y=d1, mode='lines', name=first), secondary_y=False)
+    fig.add_trace(go.Scatter(y=d2, mode='lines', name=second), secondary_y=True)
+
+    # 축 레이블 설정
+    fig.update_yaxes(title_text=f'{first} 가격', secondary_y=False)
+    fig.update_yaxes(title_text=f'{second} 가격', secondary_y=True)
+
+    # Stremlit에 Plotly 그래프 표시
+    st.plotly_chart(fig)
 
 data = History()
 PERIOD = 20
