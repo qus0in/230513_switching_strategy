@@ -75,14 +75,13 @@ def visualize(cd, period, weight, span):
     fig.update_layout(
         margin=dict(l=0, r=0, t=0, b=0),
         width=500,
-        height=250,
-        coloraxis=dict(colorscale='Rainbow')
+        height=250
     )
     # 레이아웃 설정
     # 그래프 출력
     # fig.show()
     col1, col2 = st.columns([2, 3])
-    col2.plotly_chart(fig, True)
+    col2.plotly_chart(fig, True, theme=None)
     # return df.iloc[-1]
     table = df.iloc[-1].sort_values(ascending=False)
     table.name = 'Score'
