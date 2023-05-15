@@ -121,6 +121,12 @@ def visualize(cd, period, weight, span):
     # Stremlit에 Plotly 그래프 표시
     st.plotly_chart(fig, True)
 
+st.set_page_config(
+    page_title="스위칭 전략",
+    page_icon=":chart_with_upwards_trend:",
+    # layout="wide"
+)
+
 data = History()
 PERIOD = 20
 WEIGHT = True
